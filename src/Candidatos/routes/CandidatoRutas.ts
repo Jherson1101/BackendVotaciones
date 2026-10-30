@@ -4,9 +4,6 @@ import ControllerCandidatos from "../ControllerCandidatos/ControllerCandidatos.j
 export let ExpressRouter = Express.Router()
 let RouterCandidatos = new ControllerCandidatos(new SerivicosCandidado())
 import { multerdatos } from "../../helpers/SubidaFotos.js" 
-
-
-
 ExpressRouter.post('/create',multerdatos.single('foto'),RouterCandidatos.crearCandidato)
 ExpressRouter.get('/todos', RouterCandidatos.obtenerCandidatos)
 ExpressRouter.post('/find', RouterCandidatos.obtenerCandidatoPorId)
