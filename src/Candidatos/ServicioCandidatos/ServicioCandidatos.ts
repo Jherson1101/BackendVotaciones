@@ -3,14 +3,13 @@ import { AppDataSource } from "../../db/db.js";
 import { Candidato } from "../Entities/Entitites.js"
 import { ModeloCandidto } from "../Entities/ModeloCandidadto.js"
 
-
 export interface RepositorioCandidatos<T> {
     create(datos: ModeloCandidto): void
     findAll(): T[] | Promise<T[]>;
     findById(id: number): Promise<T | null>;
     update(id: number, datos: Partial<T>): void
-    delete(id: number): boolean | Promise<boolean>;
-} 
+    delete(id: number): boolean | Promise<boolean>;   
+}  
 export class SerivicosCandidado implements RepositorioCandidatos<Candidato> {
     async create(datos: ModeloCandidto, path?: string) {
         try {
@@ -40,9 +39,6 @@ export class SerivicosCandidado implements RepositorioCandidatos<Candidato> {
             .getMany()
         return candidatos
     }
-
-
-
     async findById(id: number): Promise<Candidato | null> {
         let Repo = await AppDataSource.getRepository(Candidato).findOne({
             where: {
@@ -51,7 +47,6 @@ export class SerivicosCandidado implements RepositorioCandidatos<Candidato> {
         })
         return Repo
     }
-
 
     async update(id: number, datos?: Partial<Candidato>):
         Promise<Candidato | Promise<Candidato | null>> {
@@ -62,12 +57,7 @@ export class SerivicosCandidado implements RepositorioCandidatos<Candidato> {
         return Encontrado
     }
 
-
-
     delete(id: number): boolean | Promise<boolean> {
         throw new Error("Method not implemented.");
     }
-
-
-
 }
