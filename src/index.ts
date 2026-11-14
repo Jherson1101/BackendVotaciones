@@ -19,10 +19,7 @@ export class Boostrap {
     public port: number = 4002
     constructor() {
         this.app = express()
-        this.app.use(cors({
-
-                origin : ['https://votacionesfronendt.onrender.com/']
-        }))
+        this.app.use(cors())
         this.app.use(express.json())
         this.app.use(express.urlencoded({ extended: true }))
         this.app.use("/uploads", express.static(path.join(process.cwd(), "src", "uploads")))
