@@ -2,6 +2,7 @@ import streamifier from "streamifier"
 import { v2 as cloudbinary } from "cloudinary"   
 import type { UploadApiErrorResponse, UploadApiResponse } from "cloudinary"  
 
+
 export const SubirImagen = (Buffer: Buffer): Promise<UploadApiResponse> => {
     return new Promise((resolve, reject) => {
         const stream = cloudbinary.uploader.upload_stream({

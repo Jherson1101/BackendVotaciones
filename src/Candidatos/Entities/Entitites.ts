@@ -11,6 +11,7 @@ export class Candidato {
     @PrimaryGeneratedColumn('increment')
     id!: number;
 
+
     @Column({ type: 'varchar' })
     nombre!: string;
 
@@ -23,19 +24,22 @@ export class Candidato {
     @Column({ nullable: true, type: 'varchar' })
     foto!: string;
 
+
     @Column({ type: "int", default: 0 })
-    voto!: number;   
+    voto!: number;
 
     @Column({
-      name: 'anio',
-      type:'int',
-      nullable: true,
-      default: null,
+        name: 'anio',
+        type: 'int',
+        nullable: true,
+        default: null,
     })
-    anio!:  number
+    anio!: number
 
-    @Column({ default: true  , type:'boolean'})
+
+    @Column({ default: true, type: 'boolean' })
     activo!: boolean;
+
 
     @CreateDateColumn()
     createdAt!: Date;

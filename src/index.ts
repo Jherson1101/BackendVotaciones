@@ -9,11 +9,9 @@ import { appRouter } from "./Estudiante/routes/routes.js"
 import { swaggerDocs } from "./swager.js"
 import { ExpressRouter } from "./Candidatos/routes/CandidatoRutas.js"
 import dotenv from "dotenv"
-import cors from 'cors' 
-import { alumnos } from "./Data/data.js" 
-// import {  Estudiante }  from "../src/Estudiante/entities/Entities.js" 
-
-
+import cors from 'cors'
+import { alumnos } from "./Data/data.js"
+// import {  Estudiante }  from "../src/Estudiante/entities/Entities.js"  
 dotenv.config()
 export class Boostrap {
     public app!: Application
@@ -25,24 +23,22 @@ export class Boostrap {
         this.app.use(express.urlencoded({ extended: true }))
         this.app.use("/uploads", express.static(path.join(process.cwd(), "src", "uploads")))
         this.app.use(appRouter)
-        this.app.use('/candidato' , ExpressRouter)
+        this.app.use('/candidato', ExpressRouter)
         swaggerDocs(this.app, this.port)
         this.InicarPuerto()
-    }
+    } 
+
     async InicarPuerto() {
         try {
             await this.app.listen(this.port, () => {
                 console.log('Corriendo en el puerto ', this.port)
-            }) 
-
-            let GetRepootirot  =  AppDataSource.getRepository(Estudiante)
+            })
             AppDataSource.initialize().then(() => {  
-                console.log('se iniciandando -->')   
-        
+                console.log('se iniciandando -->')
 
-
-            }).catch(() => {
-                console.log('error al iinciar')  
+            }).catch((e) => {
+                
+                    console.log(e)
             })
             console.log('Base de datos Conectada!!!!!!!!!!')
         } catch (error) {
