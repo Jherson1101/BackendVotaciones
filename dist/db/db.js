@@ -4,6 +4,7 @@ import { Candidato } from "../Candidatos/Entities/Entitites.js";
 import dotenv from "dotenv";
 // import path from "path"
 // const uploadData = path.join(process.cwd(), 'src', 'migraciones/**/*{.js,.ts}')  
+// mysql -h nozomi.proxy.rlwy.net -u root -p VxtpXgqbVCFwRjNXQiFBLemSJhVTLzMd --port 14087 --protocol=TCP railway
 dotenv.config();
 export const AppDataSource = new DataSource({
     type: "mysql",
